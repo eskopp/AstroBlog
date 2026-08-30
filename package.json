@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "astro": "^5.13.0",
-    "astro-blog-theme": "github:eskopp/AstroBlogTheme#v0.2.27",
+    "astro-blog-theme": "github:eskopp/AstroBlogTheme#v0.2.28",
     "katex": "^0.16.11",
     "mermaid": "^11.0.0",
     "rehype-katex": "^7.0.1",
