@@ -18,6 +18,14 @@ export default defineConfig({
         { href: "https://github.com/eskopp", label: "GitHub" },
         { href: "/rss.xml", label: "RSS" },
       ],
+      legal: [
+        { href: "/impressum", label: "Impressum" },
+        { href: "/datenschutz", label: "Datenschutz" },
+      ],
+      license: {
+        label: "CC BY-ND 4.0",
+        href: "https://creativecommons.org/licenses/by-nd/4.0/deed.de",
+      },
     }),
   ],
 });
