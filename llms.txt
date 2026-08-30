@@ -1,0 +1,13 @@
+# Erik Skopp
+
+> Notes on infrastructure, self-hosting and the occasional rocket launch.
+
+## Pages
+
+- [Blog](https://erik-skopp.de/blog/): all posts
+- [Tags](https://erik-skopp.de/tags/): posts by tag
+- [RSS feed](https://erik-skopp.de/rss.xml)
+
+## Posts
+
+- [Hallo Welt](https://erik-skopp.de/blog/hello-world/): Erster Beitrag. Der Blog läuft. (2026-08-30)
