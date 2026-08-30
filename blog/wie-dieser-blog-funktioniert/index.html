@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="de"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Erik Skopp" href="https://erik-skopp.de/rss.xml"><link rel="alternate" type="application/feed+json" title="Erik Skopp" href="https://erik-skopp.de/feed.json"><link rel="alternate" hreflang="de" href="https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/"><link rel="alternate" hreflang="en" href="https://erik-skopp.de/blog/how-this-blog-works/"><link rel="alternate" hreflang="x-default" href="https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/"><title>Wie dieser Blog funktioniert · Erik Skopp</title><meta name="description" content="Ein ausführlicher Blick auf Aufbau, Deployment und alle Bausteine – von Astro über die CI-Pipeline bis zum nginx auf dem Server."><meta name="author" content="Erik Skopp"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="article"><meta property="og:site_name" content="Erik Skopp"><meta property="og:title" content="Wie dieser Blog funktioniert · Erik Skopp"><meta property="og:description" content="Ein ausführlicher Blick auf Aufbau, Deployment und alle Bausteine – von Astro über die CI-Pipeline bis zum nginx auf dem Server."><meta property="og:url" content="https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/"><meta property="og:image" content="https://erik-skopp.de/og/wie-dieser-blog-funktioniert.svg"><meta property="og:locale" content="de_DE"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Wie dieser Blog funktioniert · Erik Skopp"><meta name="twitter:description" content="Ein ausführlicher Blick auf Aufbau, Deployment und alle Bausteine – von Astro über die CI-Pipeline bis zum nginx auf dem Server."><meta name="twitter:image" content="https://erik-skopp.de/og/wie-dieser-blog-funktioniert.svg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Erik Skopp","url":"https://erik-skopp.de/","description":"Notes on infrastructure, self-hosting and the occasional rocket launch."}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Wie dieser Blog funktioniert","description":"Ein ausführlicher Blick auf Aufbau, Deployment und alle Bausteine – von Astro über die CI-Pipeline bis zum nginx auf dem Server.","url":"https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/","image":"https://erik-skopp.de/og/wie-dieser-blog-funktioniert.svg","datePublished":"2026-09-01T00:00:00.000Z","dateModified":"2026-09-01T00:00:00.000Z","inLanguage":"de","author":{"@type":"Person","name":"Erik Skopp"}}</script><script>(function(){const colorScheme = "light";
+
+  const root = document.documentElement;
+  const stored = (() => {
+    try {
+      return localStorage.getItem("theme");
+    } catch (e) {
+      return null;
+    }
+  })();
+  let theme = stored === "light" || stored === "dark" ? stored : null;
+  if (!theme) {
+    theme =
+      colorScheme === "light" || colorScheme === "dark"
+        ? colorScheme
+        : window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+  }
+  root.dataset.theme = theme;
+})();</script><link rel="stylesheet" href="/_astro/403.BT85Lree.css"></head> <body> <a class="skip-link" href="#main">Zum Inhalt springen</a> <div class="reading-progress" aria-hidden="true"> <div class="reading-progress__bar" data-reading-progress></div> </div> <script type="module">const n=document.querySelector("[data-reading-progress]");if(n){const e=()=>{const t=document.documentElement.scrollHeight-window.innerHeight,s=t>0?window.scrollY/t:0;n.style.transform=`scaleX(${Math.min(1,Math.max(0,s))})`};e(),addEventListener("scroll",e,{passive:!0}),addEventListener("resize",e,{passive:!0})}</script> <header class="site-header"> <div class="site-header__inner"> <a class="site-header__brand" href="/">Erik Skopp</a> <nav class="site-nav" aria-label="Primary"> <a href="/"> Home </a><a href="/blog" aria-current="page"> Blog </a><a href="/tags"> Tags </a><a href="/about"> About </a> <div class="search" data-search> <div class="search__field"> <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <circle cx="11" cy="11" r="7"></circle> <path d="M21 21l-4.3-4.3"></path> </svg> <input type="search" class="search__input" placeholder="Search…" aria-label="Search posts" autocomplete="off" spellcheck="false" data-search-input> </div> <div class="search__panel" hidden data-search-panel> <ul class="search__results" data-search-results></ul> <p class="search__empty" hidden data-search-empty>No matching posts.</p> </div> </div> <script type="module">const c=document.querySelector("[data-search]");if(c){const r=c.querySelector("[data-search-input]"),i=c.querySelector("[data-search-panel]"),d=c.querySelector("[data-search-results]"),u=c.querySelector("[data-search-empty]");let o=null,l=null;const h=()=>(l||(l=fetch("/search.json").then(e=>e.json()).then(e=>{o=e}).catch(()=>{o=[]})),l),m=(e,n)=>{const t=e.title.toLowerCase();return t===n?100:t.startsWith(n)?80:t.includes(n)?60:e.tags.some(s=>s.toLowerCase().includes(n))?40:e.description.toLowerCase().includes(n)?30:e.body.toLowerCase().includes(n)?10:0},f=()=>{const e=r.value.trim().toLowerCase();if(d.innerHTML="",!e||!o){i.hidden=!0,u.hidden=!0;return}const n=o.map(t=>({e:t,s:m(t,e)})).filter(t=>t.s>0).sort((t,s)=>s.s-t.s||+new Date(s.e.date)-+new Date(t.e.date)).slice(0,8);i.hidden=!1,u.hidden=n.length>0;for(const{e:t}of n){const s=document.createElement("li"),a=document.createElement("a");a.href=t.url,a.innerHTML='<span class="search__result-title"></span><span class="search__result-desc"></span>',a.querySelector(".search__result-title").textContent=t.title,a.querySelector(".search__result-desc").textContent=t.description,s.appendChild(a),d.appendChild(s)}},p=()=>{i.hidden=!0};r.addEventListener("focus",()=>{h().then(f)}),r.addEventListener("input",()=>{h().then(f)}),r.addEventListener("keydown",e=>{e.key==="Escape"&&(r.value="",p(),r.blur())}),document.addEventListener("click",e=>{c.contains(e.target)||p()}),document.addEventListener("keydown",e=>{e.key==="/"&&document.activeElement!==r&&!(document.activeElement instanceof HTMLInputElement)&&!(document.activeElement instanceof HTMLTextAreaElement)&&(e.preventDefault(),r.focus())})}</script> <div class="lang-switch" role="group" aria-label="Language"> <span class="lang-switch__current" aria-current="true">DE</span><span class="lang-switch__sep" aria-hidden="true">/</span><a href="/blog/how-this-blog-works/">EN</a> </div> <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> </button> <script type="module">const n=document.getElementById("theme-toggle");n?.addEventListener("click",()=>{const t=document.documentElement,e=t.dataset.theme==="dark"?"light":"dark";t.dataset.theme=e;try{localStorage.setItem("theme",e)}catch{}});</script> </nav> </div> </header> <main id="main" class="container wide">  <div class="post-layout has-toc"> <article class="post"> <header class="post__header"> <h1>Wie dieser Blog funktioniert</h1> <p class="post__meta"> <time datetime="2026-09-01T00:00:00.000Z">1. Sept. 2026</time> <span> · 7 Min. Lesezeit</span> <span>  · aktualisiert  <time datetime="2026-09-01T00:00:00.000Z">1. Sept. 2026</time> </span> <span class="ai-flag" title="Für diesen Beitrag wurde KI verwendet"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"></path> </svg>
+AI
+</span> </p> <ul class="tag-list"> <li> <a href="/tags/meta/">#meta</a> </li><li> <a href="/tags/code/">#code</a> </li> </ul> </header>  <nav class="toc toc--inline" aria-label="Inhalt"><p class="toc__title">Inhalt</p><ol><li class="toc__d2"><a href="#warum-überhaupt-selbst-bauen">Warum überhaupt selbst bauen</a></li><li class="toc__d2"><a href="#das-theme-als-paket">Das Theme als Paket</a></li><li class="toc__d3"><a href="#konfiguration-an-einer-stelle">Konfiguration an einer Stelle</a></li><li class="toc__d2"><a href="#inhalte-und-das-sprachmodell">Inhalte und das Sprachmodell</a></li><li class="toc__d3"><a href="#slugs-tragen-die-sprache">Slugs tragen die Sprache</a></li><li class="toc__d3"><a href="#frontmatter">Frontmatter</a></li><li class="toc__d2"><a href="#die-build--und-deploy-pipeline">Die Build- und Deploy-Pipeline</a></li><li class="toc__d3"><a href="#schritt-1-push-auf-main">Schritt 1: Push auf main</a></li><li class="toc__d3"><a href="#schritt-2-bauen">Schritt 2: Bauen</a></li><li class="toc__d3"><a href="#schritt-3-in-den-dist-branch-schieben">Schritt 3: In den dist-Branch schieben</a></li><li class="toc__d3"><a href="#schritt-4-der-server-zieht">Schritt 4: Der Server zieht</a></li><li class="toc__d3"><a href="#schritt-5-der-spiegel">Schritt 5: Der Spiegel</a></li><li class="toc__d2"><a href="#was-das-theme-mitbringt">Was das Theme mitbringt</a></li><li class="toc__d3"><a href="#hell-und-dunkel">Hell und dunkel</a></li><li class="toc__d3"><a href="#suche">Suche</a></li><li class="toc__d3"><a href="#tags">Tags</a></li><li class="toc__d3"><a href="#feeds-und-maschinen-lesbares">Feeds und Maschinen-lesbares</a></li><li class="toc__d3"><a href="#lesehilfen">Lesehilfen</a></li><li class="toc__d3"><a href="#code">Code</a></li><li class="toc__d3"><a href="#diagramme">Diagramme</a></li><li class="toc__d3"><a href="#formeln">Formeln</a></li><li class="toc__d3"><a href="#fehlerseiten">Fehlerseiten</a></li><li class="toc__d3"><a href="#externe-links">Externe Links</a></li><li class="toc__d2"><a href="#hosting">Hosting</a></li><li class="toc__d2"><a href="#wie-offline-das-ganze-ist">Wie „offline” das Ganze ist</a></li><li class="toc__d2"><a href="#was-noch-aussteht">Was noch aussteht</a></li></ol></nav> <div class="prose">  <p>Dieser Beitrag ist absichtlich lang. Er erklärt Schritt für Schritt, wie die
+Seite gebaut, ausgeliefert und gewartet wird – und dient nebenbei als Beispiel
+dafür, wie sich der Lesefortschritts-Balken oben und das Inhaltsverzeichnis
+rechts verhalten, wenn wirklich etwas zu scrollen da ist.</p>
+<h2 id="warum-überhaupt-selbst-bauen">Warum überhaupt selbst bauen</h2>
+<p>Es gibt fertige Blog-Plattformen, und für die meisten Leute sind sie die
+richtige Wahl. Der Grund, hier trotzdem alles selbst zu machen, ist nicht
+Ideologie, sondern eine Handvoll konkreter Anforderungen: kein Tracking, keine
+Cookies, keine externen Skripte, volle Kontrolle über das Markup, und ein
+Deployment, das ohne laufenden Anwendungsserver auskommt. Eine statische Seite
+erfüllt das alles, und der Aufwand hält sich in Grenzen, wenn man die Teile
+sauber trennt.</p>
+<p>Die Trennung sieht so aus: Es gibt ein <strong>Theme</strong> als eigenständiges Paket und
+ein <strong>Blog-Repo</strong>, das nur Konfiguration und Inhalte enthält. Das Theme kann
+sich weiterentwickeln, ohne dass die Inhalte davon berührt werden, und
+umgekehrt.</p>
+<h2 id="das-theme-als-paket">Das Theme als Paket</h2>
+<p>Das Theme heißt AstroBlogTheme und liegt in einem eigenen Repository. Das
+Blog-Repo bindet es nicht als kopierten Ordner ein, sondern als
+Abhängigkeit – direkt von GitHub, ungefähr so, wie man in Hugo ein Modul
+importiert:</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">  "dependencies"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">    "astro-blog-theme"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">: </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"github:eskopp/AstroBlogTheme#v0.2.22"</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+<p>Die Versionsnummer hinter dem <code>#</code> zeigt auf ein Git-Tag. Dadurch ist genau
+festgelegt, welcher Stand des Themes gebaut wird, und ein Update ist ein
+bewusster Schritt: Tag hochziehen, neu bauen, fertig.</p>
+<p>Technisch ist das Theme eine <strong>Astro-Integration</strong>. Beim Start hängt es sich in
+die Konfiguration ein, injiziert Routen (<code>/blog</code>, <code>/tags</code>, <code>/rss.xml</code>,
+<code>/feed.json</code>, <code>/llms.txt</code>, die Fehlerseiten und ein paar mehr), registriert die
+nötigen Markdown-Plugins und stellt Layouts und Komponenten bereit. Das
+Blog-Repo besteht am Ende aus einer <code>astro.config.mjs</code>, einer
+Content-Collection-Definition, ein paar eigenen Seiten und den Beiträgen.</p>
+<h3 id="konfiguration-an-einer-stelle">Konfiguration an einer Stelle</h3>
+<p>Alles, was das Theme über die konkrete Seite wissen muss, steht in einem Objekt
+in der <code>astro.config.mjs</code>: Titel, Beschreibung, Navigation, Footer-Links,
+Lizenz, Sprachen, welche optionalen Features an sind. Das Theme reicht dieses
+Objekt über ein virtuelles Modul an alle Komponenten weiter, sodass es nirgends
+doppelt gepflegt werden muss.</p>
+<h2 id="inhalte-und-das-sprachmodell">Inhalte und das Sprachmodell</h2>
+<p>Jeder Beitrag ist eine Markdown-Datei. Die Ablage folgt einer festen Regel:
+<strong>ein Ordner pro Beitrag, darin eine Datei pro Sprache, benannt nach der
+Sprache.</strong></p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>src/content/blog/</span></span>
+<span class="line"><span>  wie-dieser-blog-funktioniert/</span></span>
+<span class="line"><span>    de.md</span></span>
+<span class="line"><span>    en.md</span></span>
+<span class="line"><span>  hello-world/</span></span>
+<span class="line"><span>    de.md</span></span>
+<span class="line"><span>    en.md</span></span></code></pre>
+<p>Der Ordnername verknüpft die Übersetzungen automatisch. Der Sprachumschalter im
+Header springt zwischen der deutschen und der englischen Fassung eines Beitrags,
+ohne dass man das von Hand verdrahten muss.</p>
+<h3 id="slugs-tragen-die-sprache">Slugs tragen die Sprache</h3>
+<p>Es gibt bewusst <strong>kein</strong> <code>/en/</code>-Präfix in den URLs. Stattdessen bekommt jede
+Sprachfassung ihren eigenen Slug: die deutsche Version dieses Beitrags liegt
+unter <code>/blog/wie-dieser-blog-funktioniert/</code>, die englische unter
+<code>/blog/how-this-blog-works/</code>. Beide leben im selben <code>/blog/</code>-Namensraum. Der
+Slug kommt aus dem Feld <code>urlSlug</code> im Frontmatter, oder – wenn das fehlt – aus
+dem Ordnernamen.</p>
+<p>Die Übersichtsseiten (<code>/blog</code>, <code>/tags</code>, die Feeds) zeigen die Hauptsprache. Wer
+englische Beiträge lesen will, kommt über den Sprachumschalter auf einem Beitrag
+oder über die englische Startseite dorthin.</p>
+<h3 id="frontmatter">Frontmatter</h3>
+<p>Ein Beitrag braucht <code>title</code>, <code>description</code> und <code>pubDate</code>. Optional sind unter
+anderem:</p>
+<ul>
+<li><code>updatedDate</code> – zeigt „aktualisiert am …” in der Meta-Zeile</li>
+<li><code>tags</code> – Hugo-artige Tag-Seiten unter <code>/tags/</code></li>
+<li><code>draft</code> – versteckt den Beitrag</li>
+<li><code>ai</code> – blendet eine kleine „AI”-Markierung ein, wenn beim Schreiben KI genutzt
+wurde</li>
+<li><code>toc</code> – überschreibt pro Beitrag, ob das Inhaltsverzeichnis erscheint</li>
+<li><code>translationKey</code> – überschreibt die automatische Übersetzungs-Verknüpfung</li>
+</ul>
+<h2 id="die-build--und-deploy-pipeline">Die Build- und Deploy-Pipeline</h2>
+<p>Hier wird es interessant, weil auf dem Server <strong>nichts gebaut wird</strong>. Der Server
+kennt Astro nicht und hat kein Node installiert.</p>
+<h3 id="schritt-1-push-auf-main">Schritt 1: Push auf <code>main</code></h3>
+<p>Jeder Push auf den <code>main</code>-Branch des Blog-Repos startet einen
+GitHub-Actions-Workflow.</p>
+<h3 id="schritt-2-bauen">Schritt 2: Bauen</h3>
+<p>Der Workflow installiert die Abhängigkeiten (inklusive des Themes von GitHub),
+führt <code>astro build</code> aus und erhält einen Ordner <code>dist/</code> mit fertigem HTML, CSS
+und den paar kleinen JavaScript-Bündeln.</p>
+<h3 id="schritt-3-in-den-dist-branch-schieben">Schritt 3: In den <code>dist</code>-Branch schieben</h3>
+<p>Statt den <code>dist</code>-Ordner irgendwohin hochzuladen, committet der Workflow ihn in
+einen separaten Branch namens <code>dist</code>. Dieser Branch enthält also immer den
+aktuellen fertig gebauten Stand der Seite, mit Historie. Ein Ruleset auf GitHub
+sorgt dafür, dass niemand von Hand daran herumschreibt.</p>
+<h3 id="schritt-4-der-server-zieht">Schritt 4: Der Server zieht</h3>
+<p>Auf dem Webserver liegt ein flacher Klon genau dieses <code>dist</code>-Branch unter
+<code>/var/www/astroblog</code>. Ein <code>git fetch --depth 1</code> plus <code>git reset --hard</code> holt den
+neuen Stand. nginx liefert die Dateien direkt aus – kein Build, kein Neustart,
+kein Anwendungsprozess.</p>
+<h3 id="schritt-5-der-spiegel">Schritt 5: Der Spiegel</h3>
+<p>Derselbe Workflow spiegelt zusätzlich das komplette Repo auf eine selbst
+gehostete GitLab-Instanz. Das ist reine Vorsichtsmaßnahme: eine zweite,
+unabhängige Kopie von Code und Historie.</p>
+<h2 id="was-das-theme-mitbringt">Was das Theme mitbringt</h2>
+<p>Ein Rundgang durch die Features, die im Beitrag oben schon teilweise sichtbar
+sind.</p>
+<h3 id="hell-und-dunkel">Hell und dunkel</h3>
+<p>Ein Umschalter oben rechts. Die Auswahl landet im <code>localStorage</code> des Browsers,
+wird nie an den Server geschickt und ist beim nächsten Besuch wieder da. Ohne
+gespeicherte Auswahl richtet sich die Seite nach der Systemeinstellung. Ein
+winziges Inline-Script setzt das Thema, bevor die Seite gezeichnet wird, damit
+nichts flackert.</p>
+<h3 id="suche">Suche</h3>
+<p>Beim Bauen entsteht eine Datei <code>/search.json</code> mit Titel, Beschreibung, Tags und
+einem gekürzten Klartext-Auszug jedes Beitrags. Das Suchfeld im Header lädt
+diese Datei einmalig beim ersten Fokus und filtert dann komplett im Browser.
+Die Suchbegriffe verlassen den Rechner nicht.</p>
+<h3 id="tags">Tags</h3>
+<p><code>/tags/</code> listet alle Tags mit Anzahl, <code>/tags/&#x3C;tag>/</code> die Beiträge dazu. Die
+Tags an einem Beitrag sind Links dorthin. Die URL-Form der Tags folgt Hugos
+Regel: kleingeschrieben, Leerzeichen zu Bindestrichen.</p>
+<h3 id="feeds-und-maschinen-lesbares">Feeds und Maschinen-lesbares</h3>
+<ul>
+<li><code>/rss.xml</code> – klassischer RSS-Feed</li>
+<li><code>/feed.json</code> – JSON Feed 1.1</li>
+<li><code>/llms.txt</code> – eine Markdown-Landkarte der Seite nach dem llmstxt.org-Format,
+mit einem Eintrag pro Beitrag</li>
+<li><code>/sitemap-index.xml</code> – für Suchmaschinen</li>
+<li>JSON-LD im <code>&#x3C;head></code> – strukturierte Daten für <code>WebSite</code> und, auf Beiträgen,
+<code>BlogPosting</code></li>
+</ul>
+<h3 id="lesehilfen">Lesehilfen</h3>
+<p>Lesezeit in der Meta-Zeile, ein Inhaltsverzeichnis ab drei Überschriften (auf
+dem Desktop als klebrige Seitenleiste rechts, sonst als Kasten über dem Text),
+Anker-Links beim Hovern über Überschriften, ein „nach oben”-Knopf nach ein paar
+Bildschirmhöhen Scrollen – und eben der Fortschrittsbalken ganz oben.</p>
+<h3 id="code">Code</h3>
+<p>Syntax-Highlighting über Shiki mit zwei Themes, hell und dunkel, die dem
+Umschalter folgen. Jeder Block hat Zeilennummern und einen Copy-Knopf. Der
+Copy-Knopf kopiert nur den Code, ohne die Zeilennummern.</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">from</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> functools </span><span style="color:#D73A49;--shiki-dark:#F97583">import</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> lru_cache</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">@lru_cache</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#E36209;--shiki-dark:#FFAB70">maxsize</span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF">None</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">def</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> fib</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(n: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) -> </span><span style="color:#005CC5;--shiki-dark:#79B8FF">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    return</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> n </span><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> n </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 2</span><span style="color:#D73A49;--shiki-dark:#F97583"> else</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> fib(n </span><span style="color:#D73A49;--shiki-dark:#F97583">-</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) </span><span style="color:#D73A49;--shiki-dark:#F97583">+</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> fib(n </span><span style="color:#D73A49;--shiki-dark:#F97583">-</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 2</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span></code></pre>
+<h3 id="diagramme">Diagramme</h3>
+<p>Mermaid-Blöcke werden im Browser gerendert, aus einem selbst gehosteten Bündel,
+das nur auf Seiten mit einem Diagramm geladen wird. Beim Umschalten von hell auf
+dunkel wird das Diagramm neu gezeichnet.</p>
+<pre class="mermaid">flowchart LR
+    A["Markdown"] --> B["astro build"]
+    B --> C["dist branch"]
+    C --> D["git pull auf dem Server"]
+    D --> E["nginx"]</pre>
+<h3 id="formeln">Formeln</h3>
+<p>Mathe wird zur Build-Zeit mit KaTeX gesetzt. Im ausgelieferten HTML steht
+fertiges Markup, für die Anzeige braucht es kein JavaScript. Chemie geht über
+die mhchem-Erweiterung:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mtext> </mtext><mi mathvariant="normal">H</mi><msub><mpadded width="0px"><mphantom><mi>X</mi></mphantom></mpadded><mpadded height="0px"><mn>2</mn></mpadded></msub><mrow></mrow><mo>+</mo><mrow></mrow><mi mathvariant="normal">O</mi><msub><mpadded width="0px"><mphantom><mi>X</mi></mphantom></mpadded><mpadded height="0px"><mn>2</mn></mpadded></msub><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded></mover><mn>2</mn><mtext> </mtext><mi mathvariant="normal">H</mi><msub><mpadded width="0px"><mphantom><mi>X</mi></mphantom></mpadded><mpadded height="0px"><mn>2</mn></mpadded></msub><mi mathvariant="normal">O</mi></mrow><annotation encoding="application/x-tex">\ce{2 H2 + O2 -> 2 H2O}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathrm">H</span><span class="mord"><span class="mord"><span class="mord rlap"><span class="inner"><span class="mord" style="color:transparent;"><span class="mord mathnormal" style="margin-right:0.0785em;color:transparent;">X</span></span></span><span class="fix"></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:-0.15em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"></span><span class="mord mathrm">O</span><span class="mord"><span class="mord"><span class="mord rlap"><span class="inner"><span class="mord" style="color:transparent;"><span class="mord mathnormal" style="margin-right:0.0785em;color:transparent;">X</span></span></span><span class="fix"></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:-0.15em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.622em;"><span style="top:-3.144em;"><span class="pstrut" style="height:2.522em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span><span class="svg-align" style="top:-2.511em;"><span class="pstrut" style="height:2.522em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathrm">H</span><span class="mord"><span class="mord"><span class="mord rlap"><span class="inner"><span class="mord" style="color:transparent;"><span class="mord mathnormal" style="margin-right:0.0785em;color:transparent;">X</span></span></span><span class="fix"></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:-0.15em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathrm">O</span></span></span></span></span></p>
+<p>Physik ist normale LaTeX-Notation:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi mathvariant="normal">ℏ</mi><mtext> </mtext><mfrac><mi mathvariant="normal">∂</mi><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac><mo stretchy="false">∣</mo><mi>ψ</mi><mo stretchy="false">⟩</mo><mo>=</mo><mover accent="true"><mi>H</mi><mo>^</mo></mover><mo stretchy="false">∣</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">i\hbar\,\frac{\partial}{\partial t}\lvert\psi\rangle = \hat{H}\lvert\psi\rangle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord mathnormal">i</span><span class="mord">ℏ</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.0556em;">∂</span><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.0556em;">∂</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">∣</span><span class="mord mathnormal" style="margin-right:0.0359em;">ψ</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1968em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0813em;">H</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mopen">∣</span><span class="mord mathnormal" style="margin-right:0.0359em;">ψ</span><span class="mclose">⟩</span></span></span></span></p>
+<h3 id="fehlerseiten">Fehlerseiten</h3>
+<p>Eigene Seiten für 404, 403, 500, 503 und 429, alle mit <code>noindex</code>. nginx zeigt
+sie über seine <code>error_page</code>-Direktiven an. Auf diesem Blog sind sie bewusst nur
+auf Englisch.</p>
+<h3 id="externe-links">Externe Links</h3>
+<p>Ein kleines Script prüft nach dem Laden jeden Link: zeigt er auf eine andere
+Origin – andere Domain oder Subdomain – bekommt er <code>target="_blank"</code> und
+<code>rel="noopener noreferrer"</code>. Links innerhalb der Seite bleiben unangetastet.</p>
+<h2 id="hosting">Hosting</h2>
+<p>Die Seite läuft auf einem kleinen Server. nginx liefert die statischen Dateien
+aus, das TLS-Zertifikat kommt von Let’s Encrypt und erneuert sich selbst. Jede
+der Domains auf dem Server hat ihr eigenes Zertifikat, nicht ein gemeinsames
+SAN-Zertifikat.</p>
+<p>In den Server-Logdateien landen die üblichen Zugriffsdaten. Sie werden nach
+spätestens 14 Tagen gelöscht, und Fail2ban sperrt auffällige Adressen
+vorübergehend. Details stehen in der Datenschutzerklärung.</p>
+<h2 id="wie-offline-das-ganze-ist">Wie „offline” das Ganze ist</h2>
+<p>Alles wird vom eigenen Server ausgeliefert. Es gibt keinen einzigen Aufruf an
+einen fremden Server – keine CDN-Skripte, keine externen Schriftarten, kein
+Analyse-Dienst. Die genannte „Inter”-Schrift wird nur verwendet, wenn sie lokal
+installiert ist; nachgeladen wird nichts.</p>
+<p>Was es <strong>nicht</strong> gibt, ist ein Service Worker. Ohne Verbindung zum Server sieht
+man nichts. Echtes Offline-Lesen wäre eine eigene Ausbaustufe.</p>
+<h2 id="was-noch-aussteht">Was noch aussteht</h2>
+<p>Ein paar Dinge stehen auf der Liste: Pagination auf den Übersichtsseiten, ein
+Archiv nach Jahr, ein automatischer Pull auf dem Server statt des manuellen
+Schritts, ein Feinschliff der nginx-Konfiguration (HTTP/2, Sicherheits-Header,
+Caching für die gehashten Assets) und vielleicht der Service Worker für Offline.</p>
+<p>Mehr dazu, wenn es soweit ist.</p>  </div> <nav class="post__nav" aria-label="Beitragsnavigation"> <a href="/blog/diagramme/" rel="prev">
+← Diagramme mit Mermaid </a>  </nav> <section class="related"> <h2 class="section-title">Ähnliche Beiträge</h2> <ul class="post-list"> <li> <article class="card"> <h3><a href="/blog/diagramme/">Diagramme mit Mermaid</a></h3> <p class="card__meta"><time datetime="2026-08-31T00:00:00.000Z">31. Aug. 2026</time></p> <p>Testbeitrag für Mermaid-Diagramme, hell und dunkel.</p> </article> </li><li> <article class="card"> <h3><a href="/blog/formeln/">Mathe, Chemie und Physik</a></h3> <p class="card__meta"><time datetime="2026-08-31T00:00:00.000Z">31. Aug. 2026</time></p> <p>Testbeitrag für Formelsatz mit KaTeX – zur Build-Zeit gerendert, ohne Client-JS.</p> </article> </li><li> <article class="card"> <h3><a href="/blog/syntax-highlighting/">Syntax-Highlighting</a></h3> <p class="card__meta"><time datetime="2026-08-31T00:00:00.000Z">31. Aug. 2026</time></p> <p>Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel.</p> </article> </li> </ul> </section> </article> <nav class="toc toc--aside" aria-label="Inhalt"><p class="toc__title">Inhalt</p><ol><li class="toc__d2"><a href="#warum-überhaupt-selbst-bauen">Warum überhaupt selbst bauen</a></li><li class="toc__d2"><a href="#das-theme-als-paket">Das Theme als Paket</a></li><li class="toc__d3"><a href="#konfiguration-an-einer-stelle">Konfiguration an einer Stelle</a></li><li class="toc__d2"><a href="#inhalte-und-das-sprachmodell">Inhalte und das Sprachmodell</a></li><li class="toc__d3"><a href="#slugs-tragen-die-sprache">Slugs tragen die Sprache</a></li><li class="toc__d3"><a href="#frontmatter">Frontmatter</a></li><li class="toc__d2"><a href="#die-build--und-deploy-pipeline">Die Build- und Deploy-Pipeline</a></li><li class="toc__d3"><a href="#schritt-1-push-auf-main">Schritt 1: Push auf main</a></li><li class="toc__d3"><a href="#schritt-2-bauen">Schritt 2: Bauen</a></li><li class="toc__d3"><a href="#schritt-3-in-den-dist-branch-schieben">Schritt 3: In den dist-Branch schieben</a></li><li class="toc__d3"><a href="#schritt-4-der-server-zieht">Schritt 4: Der Server zieht</a></li><li class="toc__d3"><a href="#schritt-5-der-spiegel">Schritt 5: Der Spiegel</a></li><li class="toc__d2"><a href="#was-das-theme-mitbringt">Was das Theme mitbringt</a></li><li class="toc__d3"><a href="#hell-und-dunkel">Hell und dunkel</a></li><li class="toc__d3"><a href="#suche">Suche</a></li><li class="toc__d3"><a href="#tags">Tags</a></li><li class="toc__d3"><a href="#feeds-und-maschinen-lesbares">Feeds und Maschinen-lesbares</a></li><li class="toc__d3"><a href="#lesehilfen">Lesehilfen</a></li><li class="toc__d3"><a href="#code">Code</a></li><li class="toc__d3"><a href="#diagramme">Diagramme</a></li><li class="toc__d3"><a href="#formeln">Formeln</a></li><li class="toc__d3"><a href="#fehlerseiten">Fehlerseiten</a></li><li class="toc__d3"><a href="#externe-links">Externe Links</a></li><li class="toc__d2"><a href="#hosting">Hosting</a></li><li class="toc__d2"><a href="#wie-offline-das-ganze-ist">Wie „offline” das Ganze ist</a></li><li class="toc__d2"><a href="#was-noch-aussteht">Was noch aussteht</a></li></ol></nav> </div>  </main> <footer class="site-footer"> <div class="site-footer__inner"> <span>
+© 2026 Erik Skopp  · <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.en" rel="license">CC BY-ND 4.0</a>  </span> <nav aria-label="Social"> <a href="https://github.com/eskopp">GitHub</a> <span aria-hidden="true"> · </span><a href="/rss.xml">RSS</a>  </nav> </div> <div class="site-footer__inner site-footer__legal"> <nav aria-label="Legal"> <a href="/impressum">Impressum</a> <span aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a>  </nav> </div> </footer> <script type="module" src="/_astro/MermaidRuntime.astro_astro_type_script_index_0_lang.QaX19uCu.js"></script> <button class="to-top" type="button" aria-label="Nach oben" data-to-top hidden> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M12 19V5M5 12l7-7 7 7"></path> </svg> </button> <script>(function(){const copyLabel = "Kopieren";
+const copiedLabel = "Kopiert";
+
+      // 1. Open cross-origin links in a new tab.
+      for (const a of document.querySelectorAll("a[href]")) {
+        try {
+          const u = new URL(a.getAttribute("href"), location.href);
+          if (
+            (u.protocol === "http:" || u.protocol === "https:") &&
+            u.origin !== location.origin
+          ) {
+            a.target = "_blank";
+            a.rel = (a.rel ? a.rel + " " : "") + "noopener noreferrer";
+          }
+        } catch (e) {
+          /* ignore unparseable hrefs */
+        }
+      }
+
+      // 2. Copy button on code blocks.
+      for (const pre of document.querySelectorAll("main pre")) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "copy-btn";
+        btn.textContent = copyLabel;
+        btn.addEventListener("click", async () => {
+          try {
+            const code = pre.querySelector("code");
+            await navigator.clipboard.writeText((code || pre).innerText);
+            btn.textContent = copiedLabel;
+            setTimeout(() => (btn.textContent = copyLabel), 1500);
+          } catch (e) {
+            /* clipboard unavailable */
+          }
+        });
+        pre.appendChild(btn);
+      }
+
+      // 3. Back-to-top button.
+      const toTop = document.querySelector("[data-to-top]");
+      if (toTop) {
+        toTop.addEventListener("click", () =>
+          window.scrollTo({ top: 0, behavior: "smooth" }),
+        );
+        const onScroll = () => {
+          toTop.hidden = window.scrollY < 600;
+        };
+        addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      }
+    })();</script> </body> </html>

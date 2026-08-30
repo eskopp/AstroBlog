@@ -12,6 +12,18 @@
   ],
   "items": [
     {
+      "id": "https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/",
+      "url": "https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/",
+      "title": "Wie dieser Blog funktioniert",
+      "summary": "Ein ausführlicher Blick auf Aufbau, Deployment und alle Bausteine – von Astro über die CI-Pipeline bis zum nginx auf dem Server.",
+      "date_published": "2026-09-01T00:00:00.000Z",
+      "date_modified": "2026-09-01T00:00:00.000Z",
+      "tags": [
+        "meta",
+        "code"
+      ]
+    },
+    {
       "id": "https://erik-skopp.de/blog/diagramme/",
       "url": "https://erik-skopp.de/blog/diagramme/",
       "title": "Diagramme mit Mermaid",
