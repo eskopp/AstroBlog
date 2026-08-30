@@ -10,4 +10,4 @@
 
 ## Posts
 
-- [Hallo Welt](https://erik-skopp.de/blog/hallo-welt/): Erster Beitrag. Der Blog läuft. (2026-08-30)
+- [Hallo Welt](https://erik-skopp.de/blog/hallo-welt/): Wie dieser Blog aufgebaut ist – Theme, Deployment und was drinsteckt. (2026-08-30)
