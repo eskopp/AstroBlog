@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "astro": "^5.13.0",
-    "astro-blog-theme": "github:eskopp/AstroBlogTheme#v0.2.13"
+    "astro-blog-theme": "github:eskopp/AstroBlogTheme#v0.2.14"
   }
 }
