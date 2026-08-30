@@ -210,10 +210,10 @@ dunkel wird das Diagramm neu gezeichnet.
 
 ```mermaid
 flowchart LR
-    A["Markdown"] --> B["astro build"]
-    B --> C["dist branch"]
-    C --> D["git pull auf dem Server"]
-    D --> E["nginx"]
+    A[Markdown] --> B[astro build]
+    B --> C[dist branch]
+    C --> D[Server git pull]
+    D --> E[nginx]
 ```
 
 ### Formeln

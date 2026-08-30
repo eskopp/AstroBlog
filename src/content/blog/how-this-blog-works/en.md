@@ -200,10 +200,10 @@ redrawn.
 
 ```mermaid
 flowchart LR
-    A["Markdown"] --> B["astro build"]
-    B --> C["dist branch"]
-    C --> D["git pull on the server"]
-    D --> E["nginx"]
+    A[Markdown] --> B[astro build]
+    B --> C[dist branch]
+    C --> D[Server git pull]
+    D --> E[nginx]
 ```
 
 ### Formulas

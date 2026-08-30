@@ -13,10 +13,10 @@ pages that contain a diagram, and they follow the light/dark toggle.
 
 ```mermaid
 flowchart LR
-    A["Push to main"] --> B{"GitHub Actions"}
-    B -->|"astro build"| C["dist branch"]
-    C --> D["Web server pulls via git"]
-    D --> E["nginx serves static"]
+    A[Push to main] --> B{GitHub Actions}
+    B -->|astro build| C[dist branch]
+    C --> D[Server git pull]
+    D --> E[nginx serves static]
 ```
 
 ## One request
