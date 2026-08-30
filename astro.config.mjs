@@ -8,6 +8,7 @@ export default defineConfig({
       title: "Erik Skopp",
       description: "Notes on infrastructure, self-hosting and the occasional rocket launch.",
       author: "Erik Skopp",
+      locales: ["de", "en"],
       nav: [
         { href: "/", label: "Home" },
         { href: "/blog", label: "Blog" },
