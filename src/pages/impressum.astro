@@ -1,8 +1,18 @@
 ---
 import BaseLayout from "astro-blog-theme/layouts/BaseLayout.astro";
+
+const alternates = [
+  { locale: "de", href: "/impressum/" },
+  { locale: "en", href: "/en/impressum/" },
+];
 ---
 
-<BaseLayout locale="de" title="Impressum" description="Impressum von erik-skopp.de.">
+<BaseLayout
+  locale="de"
+  title="Impressum"
+  description="Impressum von erik-skopp.de."
+  alternates={alternates}
+>
   <article class="prose">
     <h1>Impressum</h1>
 

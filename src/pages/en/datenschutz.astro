@@ -1,0 +1,117 @@
+---
+import BaseLayout from "astro-blog-theme/layouts/BaseLayout.astro";
+
+const alternates = [
+  { locale: "de", href: "/datenschutz/" },
+  { locale: "en", href: "/en/datenschutz/" },
+];
+---
+
+<BaseLayout
+  locale="en"
+  title="Privacy Policy"
+  description="How erik-skopp.de handles personal data."
+  alternates={alternates}
+>
+  <article class="prose">
+    <h1>Privacy Policy</h1>
+
+    <h2>Controller</h2>
+    <p>
+      Erik Skopp (private, non-commercial blog). Further details in the
+      <a href="/en/impressum/">legal notice</a>.
+    </p>
+
+    <h2>Overview</h2>
+    <p>
+      This website is a static site. It sets <strong>no cookies</strong>, loads
+      <strong>no external fonts, scripts or CDNs</strong> at runtime and uses
+      <strong>no analytics or tracking services</strong>. Personal data is
+      essentially only processed in the server log files.
+    </p>
+
+    <h2>Hosting and server log files</h2>
+    <p>
+      The website runs on a server operated by netcup GmbH (location: Nuremberg,
+      Germany). When the pages are accessed, the web server automatically
+      collects data transmitted by your browser and stores it in log files:
+    </p>
+    <ul>
+      <li>abbreviated or full IP address</li>
+      <li>date and time of access</li>
+      <li>requested address (URL) and HTTP status code</li>
+      <li>amount of data transferred</li>
+      <li>referrer URL (the previously visited page)</li>
+      <li>browser type and operating system (user agent)</li>
+    </ul>
+    <p>
+      The legal basis is Art. 6(1)(f) GDPR. The legitimate interest lies in
+      providing the website reliably and securely (including detecting and
+      fending off attack attempts). Log data is deleted after 14 days at the
+      latest, unless it is needed longer to investigate a specific
+      security-relevant incident. Fail2ban is used to ward off automated attacks
+      and temporarily blocks suspicious IP addresses.
+    </p>
+
+    <h2>Encryption</h2>
+    <p>
+      The connection to the website is encrypted with TLS (HTTPS). The
+      certificate is issued by Let’s Encrypt.
+    </p>
+
+    <h2>Local storage in your browser (localStorage)</h2>
+    <p>
+      The website remembers your preference for the light or dark appearance in
+      your browser’s <code>localStorage</code>. This value stays exclusively on
+      your device, is not transmitted to the server and can be deleted by you at
+      any time via your browser settings. It is not a cookie and not tracking.
+    </p>
+
+    <h2>Search</h2>
+    <p>
+      The search runs entirely in your browser. It loads an index file
+      (<code>/search.json</code>) from this server once; the search terms are
+      neither transmitted nor stored.
+    </p>
+
+    <h2>RSS feed</h2>
+    <p>
+      The RSS feed (<a href="/rss.xml">/rss.xml</a>) is served as a static file
+      from this server. The same information applies as under “server log
+      files”.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      This blog does not offer a contact form. If you send me a message by some
+      other means, I process your details solely to handle the enquiry
+      (Art. 6(1)(f) GDPR) and delete them once the enquiry has been dealt with.
+    </p>
+
+    <h2>External links</h2>
+    <p>
+      Posts may contain links to external websites. When you click them you are
+      taken to third-party servers whose data processing is the responsibility
+      of the respective provider. External links open in a new browser tab.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>You have the following rights towards the controller:</p>
+    <ul>
+      <li>access to the data stored about you (Art. 15 GDPR)</li>
+      <li>rectification of inaccurate data (Art. 16 GDPR)</li>
+      <li>erasure (Art. 17 GDPR)</li>
+      <li>restriction of processing (Art. 18 GDPR)</li>
+      <li>data portability (Art. 20 GDPR)</li>
+      <li>objection to processing based on Art. 6(1)(f) GDPR (Art. 21 GDPR)</li>
+    </ul>
+    <p>
+      You also have the right to lodge a complaint with a data protection
+      supervisory authority about the processing of your personal data (Art. 77
+      GDPR).
+    </p>
+
+    <h2>Status</h2>
+    <p>This privacy policy is dated August 2026.</p>
+  </article>
+</BaseLayout>

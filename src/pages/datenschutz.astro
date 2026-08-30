@@ -1,11 +1,17 @@
 ---
 import BaseLayout from "astro-blog-theme/layouts/BaseLayout.astro";
+
+const alternates = [
+  { locale: "de", href: "/datenschutz/" },
+  { locale: "en", href: "/en/datenschutz/" },
+];
 ---
 
 <BaseLayout
   locale="de"
   title="Datenschutzerklärung"
   description="Wie erik-skopp.de mit personenbezogenen Daten umgeht."
+  alternates={alternates}
 >
   <article class="prose">
     <h1>Datenschutzerklärung</h1>
