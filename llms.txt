@@ -10,4 +10,5 @@
 
 ## Posts
 
+- [Syntax-Highlighting](https://erik-skopp.de/blog/syntax-highlighting/): Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel. (2026-08-31)
 - [Hallo Welt](https://erik-skopp.de/blog/hallo-welt/): Wie dieser Blog aufgebaut ist – Theme, Deployment und was drinsteckt. (2026-08-30)

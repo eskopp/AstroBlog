@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="de"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://erik-skopp.de/blog/syntax-highlighting/"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Erik Skopp" href="https://erik-skopp.de/rss.xml"><link rel="alternate" type="application/feed+json" title="Erik Skopp" href="https://erik-skopp.de/feed.json"><link rel="alternate" hreflang="de" href="https://erik-skopp.de/blog/syntax-highlighting/"><link rel="alternate" hreflang="en" href="https://erik-skopp.de/blog/code-highlighting/"><link rel="alternate" hreflang="x-default" href="https://erik-skopp.de/blog/syntax-highlighting/"><title>Syntax-Highlighting · Erik Skopp</title><meta name="description" content="Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel."><meta name="author" content="Erik Skopp"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="article"><meta property="og:site_name" content="Erik Skopp"><meta property="og:title" content="Syntax-Highlighting · Erik Skopp"><meta property="og:description" content="Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel."><meta property="og:url" content="https://erik-skopp.de/blog/syntax-highlighting/"><meta property="og:image" content="https://erik-skopp.de/og/syntax-highlighting.svg"><meta property="og:locale" content="de_DE"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Syntax-Highlighting · Erik Skopp"><meta name="twitter:description" content="Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel."><meta name="twitter:image" content="https://erik-skopp.de/og/syntax-highlighting.svg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Erik Skopp","url":"https://erik-skopp.de/","description":"Notes on infrastructure, self-hosting and the occasional rocket launch."}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Syntax-Highlighting","description":"Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel.","url":"https://erik-skopp.de/blog/syntax-highlighting/","image":"https://erik-skopp.de/og/syntax-highlighting.svg","datePublished":"2026-08-31T00:00:00.000Z","dateModified":"2026-08-31T00:00:00.000Z","inLanguage":"de","author":{"@type":"Person","name":"Erik Skopp"}}</script><script>
+  const root = document.documentElement;
+  const stored = (() => {
+    try {
+      return localStorage.getItem("theme");
+    } catch (e) {
+      return null;
+    }
+  })();
+  root.dataset.theme =
+    stored === "light" || stored === "dark"
+      ? stored
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+</script><link rel="stylesheet" href="/_astro/403.DTDygph4.css"></head> <body> <a class="skip-link" href="#main">Zum Inhalt springen</a> <header class="site-header"> <div class="site-header__inner"> <a class="site-header__brand" href="/">Erik Skopp</a> <nav class="site-nav" aria-label="Primary"> <a href="/"> Home </a><a href="/blog" aria-current="page"> Blog </a><a href="/tags"> Tags </a><a href="/about"> About </a> <div class="search" data-search> <div class="search__field"> <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <circle cx="11" cy="11" r="7"></circle> <path d="M21 21l-4.3-4.3"></path> </svg> <input type="search" class="search__input" placeholder="Search…" aria-label="Search posts" autocomplete="off" spellcheck="false" data-search-input> </div> <div class="search__panel" hidden data-search-panel> <ul class="search__results" data-search-results></ul> <p class="search__empty" hidden data-search-empty>No matching posts.</p> </div> </div> <script type="module">const c=document.querySelector("[data-search]");if(c){const r=c.querySelector("[data-search-input]"),i=c.querySelector("[data-search-panel]"),d=c.querySelector("[data-search-results]"),u=c.querySelector("[data-search-empty]");let o=null,l=null;const h=()=>(l||(l=fetch("/search.json").then(e=>e.json()).then(e=>{o=e}).catch(()=>{o=[]})),l),m=(e,n)=>{const t=e.title.toLowerCase();return t===n?100:t.startsWith(n)?80:t.includes(n)?60:e.tags.some(s=>s.toLowerCase().includes(n))?40:e.description.toLowerCase().includes(n)?30:e.body.toLowerCase().includes(n)?10:0},f=()=>{const e=r.value.trim().toLowerCase();if(d.innerHTML="",!e||!o){i.hidden=!0,u.hidden=!0;return}const n=o.map(t=>({e:t,s:m(t,e)})).filter(t=>t.s>0).sort((t,s)=>s.s-t.s||+new Date(s.e.date)-+new Date(t.e.date)).slice(0,8);i.hidden=!1,u.hidden=n.length>0;for(const{e:t}of n){const s=document.createElement("li"),a=document.createElement("a");a.href=t.url,a.innerHTML='<span class="search__result-title"></span><span class="search__result-desc"></span>',a.querySelector(".search__result-title").textContent=t.title,a.querySelector(".search__result-desc").textContent=t.description,s.appendChild(a),d.appendChild(s)}},p=()=>{i.hidden=!0};r.addEventListener("focus",()=>{h().then(f)}),r.addEventListener("input",()=>{h().then(f)}),r.addEventListener("keydown",e=>{e.key==="Escape"&&(r.value="",p(),r.blur())}),document.addEventListener("click",e=>{c.contains(e.target)||p()}),document.addEventListener("keydown",e=>{e.key==="/"&&document.activeElement!==r&&!(document.activeElement instanceof HTMLInputElement)&&!(document.activeElement instanceof HTMLTextAreaElement)&&(e.preventDefault(),r.focus())})}</script> <div class="lang-switch" role="group" aria-label="Language"> <span class="lang-switch__current" aria-current="true">DE</span><span class="lang-switch__sep" aria-hidden="true">/</span><a href="/blog/code-highlighting/">EN</a> </div> <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme"> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> </button> <script type="module">const n=document.getElementById("theme-toggle");n?.addEventListener("click",()=>{const t=document.documentElement,e=t.dataset.theme==="dark"?"light":"dark";t.dataset.theme=e;try{localStorage.setItem("theme",e)}catch{}});</script> </nav> </div> </header> <main id="main" class="container wide">  <div class="post-layout has-toc"> <article class="post"> <header class="post__header"> <h1>Syntax-Highlighting</h1> <p class="post__meta"> <time datetime="2026-08-31T00:00:00.000Z">31. Aug. 2026</time> <span> · 1 Min. Lesezeit</span>  <span class="ai-flag" title="Für diesen Beitrag wurde KI verwendet"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"></path> </svg>
+AI
+</span> </p> <ul class="tag-list"> <li> <a href="/tags/code/">#code</a> </li> </ul> </header>  <nav class="toc toc--inline" aria-label="Inhalt"><p class="toc__title">Inhalt</p><ol><li class="toc__d2"><a href="#python">Python</a></li><li class="toc__d2"><a href="#java">Java</a></li><li class="toc__d2"><a href="#shell">Shell</a></li><li class="toc__d2"><a href="#inline">Inline</a></li></ol></nav> <div class="prose">  <p>Kurzer Testbeitrag, um das Code-Highlighting zu prüfen. Die Farben folgen jetzt
+dem Hell-/Dunkel-Umschalter oben rechts – vorher blieben Code-Blöcke im
+Hell-Modus dunkel.</p>
+<h2 id="python">Python</h2>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">from</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> functools </span><span style="color:#D73A49;--shiki-dark:#F97583">import</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> lru_cache</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">@lru_cache</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#E36209;--shiki-dark:#FFAB70">maxsize</span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF">None</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">def</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> fib</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(n: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) -> </span><span style="color:#005CC5;--shiki-dark:#79B8FF">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#032F62;--shiki-dark:#9ECBFF">    """Fibonacci-Zahl, mit Memoisierung."""</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    return</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> n </span><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> n </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 2</span><span style="color:#D73A49;--shiki-dark:#F97583"> else</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> fib(n </span><span style="color:#D73A49;--shiki-dark:#F97583">-</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) </span><span style="color:#D73A49;--shiki-dark:#F97583">+</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> fib(n </span><span style="color:#D73A49;--shiki-dark:#F97583">-</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 2</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">class</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> Counter</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    def</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> __init__</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(self, start: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">int</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) -> </span><span style="color:#005CC5;--shiki-dark:#79B8FF">None</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">        self</span><span style="color:#24292E;--shiki-dark:#E1E4E8">._value </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> start</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    def</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> tick</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(self) -> </span><span style="color:#005CC5;--shiki-dark:#79B8FF">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">        self</span><span style="color:#24292E;--shiki-dark:#E1E4E8">._value </span><span style="color:#D73A49;--shiki-dark:#F97583">+=</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> self</span><span style="color:#24292E;--shiki-dark:#E1E4E8">._value</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> __name__</span><span style="color:#D73A49;--shiki-dark:#F97583"> ==</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> "__main__"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">    print</span><span style="color:#24292E;--shiki-dark:#E1E4E8">([fib(i) </span><span style="color:#D73A49;--shiki-dark:#F97583">for</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> i </span><span style="color:#D73A49;--shiki-dark:#F97583">in</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> range</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#005CC5;--shiki-dark:#79B8FF">10</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)])</span></span></code></pre>
+<h2 id="java">Java</h2>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">import</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> java.util.List;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">import</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> java.util.stream.Collectors;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">record</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> Post</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(String title, </span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> year, </span><span style="color:#D73A49;--shiki-dark:#F97583">boolean</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> draft) {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">public</span><span style="color:#D73A49;--shiki-dark:#F97583"> final</span><span style="color:#D73A49;--shiki-dark:#F97583"> class</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> Blog</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    public</span><span style="color:#D73A49;--shiki-dark:#F97583"> static</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> List&#x3C;</span><span style="color:#D73A49;--shiki-dark:#F97583">String</span><span style="color:#24292E;--shiki-dark:#E1E4E8">> </span><span style="color:#6F42C1;--shiki-dark:#B392F0">publishedTitles</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(List&#x3C;</span><span style="color:#D73A49;--shiki-dark:#F97583">Post</span><span style="color:#24292E;--shiki-dark:#E1E4E8">> </span><span style="color:#E36209;--shiki-dark:#FFAB70">posts</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#D73A49;--shiki-dark:#F97583">int</span><span style="color:#E36209;--shiki-dark:#FFAB70"> year</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        return</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> posts.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">stream</span><span style="color:#24292E;--shiki-dark:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">                .</span><span style="color:#6F42C1;--shiki-dark:#B392F0">filter</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(p </span><span style="color:#D73A49;--shiki-dark:#F97583">-></span><span style="color:#D73A49;--shiki-dark:#F97583"> !</span><span style="color:#24292E;--shiki-dark:#E1E4E8">p.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">draft</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> p.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">year</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> year)</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">                .</span><span style="color:#6F42C1;--shiki-dark:#B392F0">map</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(Post</span><span style="color:#D73A49;--shiki-dark:#F97583">::</span><span style="color:#24292E;--shiki-dark:#E1E4E8">title)</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">                .</span><span style="color:#6F42C1;--shiki-dark:#B392F0">collect</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(Collectors.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">toList</span><span style="color:#24292E;--shiki-dark:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+<h2 id="shell">Shell</h2>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">npm</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> run</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> build</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> &#x26;&#x26; </span><span style="color:#6F42C1;--shiki-dark:#B392F0">rsync</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> -a</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> dist/</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> server:/var/www/blog/</span></span></code></pre>
+<h2 id="inline">Inline</h2>
+<p>Inline-Code wie <code>git rebase --onto</code> oder <code>docker compose up -d</code> steht weiterhin
+in der Fließtext-Farbe, nur mit leichtem Hintergrund.</p>  </div> <nav class="post__nav" aria-label="Beitragsnavigation"> <a href="/blog/hallo-welt/" rel="prev">
+← Hallo Welt </a>  </nav>  </article> <nav class="toc toc--aside" aria-label="Inhalt"><p class="toc__title">Inhalt</p><ol><li class="toc__d2"><a href="#python">Python</a></li><li class="toc__d2"><a href="#java">Java</a></li><li class="toc__d2"><a href="#shell">Shell</a></li><li class="toc__d2"><a href="#inline">Inline</a></li></ol></nav> </div>  </main> <footer class="site-footer"> <div class="site-footer__inner"> <span>
+© 2026 Erik Skopp  · <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.en" rel="license">CC BY-ND 4.0</a>  </span> <nav aria-label="Social"> <a href="https://github.com/eskopp">GitHub</a> <span aria-hidden="true"> · </span><a href="/rss.xml">RSS</a>  </nav> </div> <div class="site-footer__inner site-footer__legal"> <nav aria-label="Legal"> <a href="/impressum">Impressum</a> <span aria-hidden="true"> · </span><a href="/datenschutz">Datenschutz</a>  </nav> </div> </footer> <button class="to-top" type="button" aria-label="Nach oben" data-to-top hidden> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M12 19V5M5 12l7-7 7 7"></path> </svg> </button> <script>(function(){const copyLabel = "Kopieren";
+const copiedLabel = "Kopiert";
+
+      // 1. Open cross-origin links in a new tab.
+      for (const a of document.querySelectorAll("a[href]")) {
+        try {
+          const u = new URL(a.getAttribute("href"), location.href);
+          if (
+            (u.protocol === "http:" || u.protocol === "https:") &&
+            u.origin !== location.origin
+          ) {
+            a.target = "_blank";
+            a.rel = (a.rel ? a.rel + " " : "") + "noopener noreferrer";
+          }
+        } catch (e) {
+          /* ignore unparseable hrefs */
+        }
+      }
+
+      // 2. Copy button on code blocks.
+      for (const pre of document.querySelectorAll("main pre")) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "copy-btn";
+        btn.textContent = copyLabel;
+        btn.addEventListener("click", async () => {
+          try {
+            const code = pre.querySelector("code");
+            await navigator.clipboard.writeText((code || pre).innerText);
+            btn.textContent = copiedLabel;
+            setTimeout(() => (btn.textContent = copyLabel), 1500);
+          } catch (e) {
+            /* clipboard unavailable */
+          }
+        });
+        pre.appendChild(btn);
+      }
+
+      // 3. Back-to-top button.
+      const toTop = document.querySelector("[data-to-top]");
+      if (toTop) {
+        toTop.addEventListener("click", () =>
+          window.scrollTo({ top: 0, behavior: "smooth" }),
+        );
+        const onScroll = () => {
+          toTop.hidden = window.scrollY < 600;
+        };
+        addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      }
+    })();</script> </body> </html>
