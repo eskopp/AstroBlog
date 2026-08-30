@@ -11,6 +11,7 @@ export default defineConfig({
       locales: ["de", "en"],
       errorLocale: "en",
       mermaid: true,
+      math: true,
       nav: [
         { href: "/", label: "Home" },
         { href: "/blog", label: "Blog" },
