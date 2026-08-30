@@ -14,10 +14,10 @@ Bundle, nur auf Seiten mit einem Diagramm, und sie folgen dem Hell-/Dunkel-Umsch
 
 ```mermaid
 flowchart LR
-    A[Push auf main] --> B{GitHub Actions}
-    B -->|astro build| C[dist-Branch]
-    C --> D[Webserver: git pull]
-    D --> E[nginx liefert statisch aus]
+    A["Push auf main"] --> B{"GitHub Actions"}
+    B -->|"astro build"| C["dist-Branch"]
+    C --> D["Webserver zieht per git pull"]
+    D --> E["nginx liefert statisch aus"]
 ```
 
 ## Ein Request
