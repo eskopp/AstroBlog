@@ -12,6 +12,16 @@
   ],
   "items": [
     {
+      "id": "https://erik-skopp.de/blog/formeln/",
+      "url": "https://erik-skopp.de/blog/formeln/",
+      "title": "Mathe, Chemie und Physik",
+      "summary": "Testbeitrag für Formelsatz mit KaTeX – zur Build-Zeit gerendert, ohne Client-JS.",
+      "date_published": "2026-08-31T00:00:00.000Z",
+      "tags": [
+        "code"
+      ]
+    },
+    {
       "id": "https://erik-skopp.de/blog/diagramme/",
       "url": "https://erik-skopp.de/blog/diagramme/",
       "title": "Diagramme mit Mermaid",
