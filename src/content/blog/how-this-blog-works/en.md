@@ -258,3 +258,6 @@ the nginx configuration (HTTP/2, security headers, caching for the hashed
 assets) and maybe the service worker for offline.
 
 More on that when it happens.
+
+> [!READMORE]
+> [Syntax highlighting](/blog/code-highlighting/)

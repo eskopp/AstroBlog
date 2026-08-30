@@ -269,3 +269,6 @@ Schritts, ein Feinschliff der nginx-Konfiguration (HTTP/2, Sicherheits-Header,
 Caching für die gehashten Assets) und vielleicht der Service Worker für Offline.
 
 Mehr dazu, wenn es soweit ist.
+
+> [!READMORE]
+> [Syntax-Highlighting](/blog/syntax-highlighting/)
