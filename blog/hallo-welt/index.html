@@ -18,4 +18,20 @@ AI
 </span> </p> <ul class="tag-list"> <li> <a href="/tags/meta/">#meta</a> </li> </ul> </header>  <div class="prose">  <p>Das ist der erste Beitrag im neuen Blog. Er läuft auf
 <a href="https://github.com/eskopp/AstroBlogTheme">AstroBlogTheme</a>, direkt von GitHub als
 Paket eingebunden.</p>
-<p>Mehr folgt.</p>  </div>  </article>  </main> <footer class="site-footer"> <div class="site-footer__inner"> <span>© 2026 Erik Skopp</span> <nav aria-label="Social"> <a href="https://github.com/eskopp">GitHub</a> <span aria-hidden="true"> · </span><a href="/rss.xml">RSS</a>  </nav> </div> </footer> </body></html>
+<p>Mehr folgt.</p>  </div>  </article>  </main> <footer class="site-footer"> <div class="site-footer__inner"> <span>© 2026 Erik Skopp</span> <nav aria-label="Social"> <a href="https://github.com/eskopp">GitHub</a> <span aria-hidden="true"> · </span><a href="/rss.xml">RSS</a>  </nav> </div> </footer> <script>
+      // Open links to other origins (external domains and subdomains) in a new tab.
+      for (const a of document.querySelectorAll("a[href]")) {
+        try {
+          const u = new URL(a.getAttribute("href"), location.href);
+          if (
+            (u.protocol === "http:" || u.protocol === "https:") &&
+            u.origin !== location.origin
+          ) {
+            a.target = "_blank";
+            a.rel = (a.rel ? a.rel + " " : "") + "noopener noreferrer";
+          }
+        } catch (e) {
+          /* ignore unparseable hrefs */
+        }
+      }
+    </script> </body> </html>
