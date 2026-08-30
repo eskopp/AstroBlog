@@ -24,7 +24,7 @@ export default defineConfig({
       ],
       license: {
         label: "CC BY-ND 4.0",
-        href: "https://creativecommons.org/licenses/by-nd/4.0/deed.de",
+        href: "https://creativecommons.org/licenses/by-nd/4.0/deed.en",
       },
     }),
   ],
