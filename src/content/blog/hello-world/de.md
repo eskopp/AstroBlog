@@ -3,6 +3,7 @@ title: "Hallo Welt"
 description: "Erster Beitrag. Der Blog läuft."
 pubDate: 2026-08-30
 tags: ["meta"]
+urlSlug: "hallo-welt"
 ai: true
 ---
 
