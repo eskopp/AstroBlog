@@ -10,6 +10,7 @@ export default defineConfig({
       author: "Erik Skopp",
       locales: ["de", "en"],
       errorLocale: "en",
+      mermaid: true,
       nav: [
         { href: "/", label: "Home" },
         { href: "/blog", label: "Blog" },
