@@ -1,0 +1,17 @@
+{
+  "name": "astro-blog",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "astro-blog-theme": "github:eskopp/AstroBlogTheme#v0.1.0"
+  }
+}
