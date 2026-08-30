@@ -1,0 +1,25 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Erik Skopp",
+  "description": "Notes on infrastructure, self-hosting and the occasional rocket launch.",
+  "home_page_url": "https://erik-skopp.de/",
+  "feed_url": "https://erik-skopp.de/feed.json",
+  "language": "de",
+  "authors": [
+    {
+      "name": "Erik Skopp"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://erik-skopp.de/blog/hallo-welt/",
+      "url": "https://erik-skopp.de/blog/hallo-welt/",
+      "title": "Hallo Welt",
+      "summary": "Erster Beitrag. Der Blog läuft.",
+      "date_published": "2026-08-30T00:00:00.000Z",
+      "tags": [
+        "meta"
+      ]
+    }
+  ]
+}
