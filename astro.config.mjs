@@ -1,9 +1,8 @@
 import { defineConfig } from "astro/config";
 import blogTheme from "astro-blog-theme";
 
-// TODO: set this to the real domain once it is decided.
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://erik-skopp.de",
   integrations: [
     blogTheme({
       title: "Erik Skopp",
