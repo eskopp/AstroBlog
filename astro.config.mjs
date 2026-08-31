@@ -21,7 +21,8 @@ export default defineConfig({
       ],
       social: [
         { href: "https://github.com/eskopp", label: "GitHub" },
-        { href: "/rss.xml", label: "RSS" },
+        { href: "/rss.xml", label: "RSS (DE)" },
+        { href: "/rss/en.xml", label: "RSS (EN)" },
       ],
       legal: [
         { href: "/impressum", label: "Impressum" },
