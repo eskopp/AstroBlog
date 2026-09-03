@@ -13,6 +13,7 @@ export default defineConfig({
       mermaid: true,
       math: true,
       colorScheme: "light",
+      postList: "rows",
       nav: [
         { href: "/", label: "Home" },
         { href: "/blog", label: "Blog" },
