@@ -44,16 +44,6 @@
       ]
     },
     {
-      "id": "https://erik-skopp.de/blog/syntax-highlighting/",
-      "url": "https://erik-skopp.de/blog/syntax-highlighting/",
-      "title": "Syntax-Highlighting",
-      "summary": "Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel.",
-      "date_published": "2026-08-31T00:00:00.000Z",
-      "tags": [
-        "code"
-      ]
-    },
-    {
       "id": "https://erik-skopp.de/blog/formeln/",
       "url": "https://erik-skopp.de/blog/formeln/",
       "title": "Mathe, Chemie und Physik",
@@ -68,6 +58,16 @@
       "url": "https://erik-skopp.de/blog/diagramme/",
       "title": "Diagramme mit Mermaid",
       "summary": "Testbeitrag für Mermaid-Diagramme, hell und dunkel.",
+      "date_published": "2026-08-31T00:00:00.000Z",
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "id": "https://erik-skopp.de/blog/syntax-highlighting/",
+      "url": "https://erik-skopp.de/blog/syntax-highlighting/",
+      "title": "Syntax-Highlighting",
+      "summary": "Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel.",
       "date_published": "2026-08-31T00:00:00.000Z",
       "tags": [
         "code"
