@@ -12,6 +12,16 @@
   ],
   "items": [
     {
+      "id": "https://erik-skopp.de/blog/schachstellungen/",
+      "url": "https://erik-skopp.de/blog/schachstellungen/",
+      "title": "Schachstellungen",
+      "summary": "Testbeitrag für FEN-Diagramme – zur Build-Zeit als SVG gerendert, ohne Client-JS.",
+      "date_published": "2026-09-05T00:00:00.000Z",
+      "tags": [
+        "code"
+      ]
+    },
+    {
       "id": "https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/",
       "url": "https://erik-skopp.de/blog/wie-dieser-blog-funktioniert/",
       "title": "Wie dieser Blog funktioniert",
@@ -34,6 +44,16 @@
       ]
     },
     {
+      "id": "https://erik-skopp.de/blog/syntax-highlighting/",
+      "url": "https://erik-skopp.de/blog/syntax-highlighting/",
+      "title": "Syntax-Highlighting",
+      "summary": "Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel.",
+      "date_published": "2026-08-31T00:00:00.000Z",
+      "tags": [
+        "code"
+      ]
+    },
+    {
       "id": "https://erik-skopp.de/blog/formeln/",
       "url": "https://erik-skopp.de/blog/formeln/",
       "title": "Mathe, Chemie und Physik",
@@ -48,16 +68,6 @@
       "url": "https://erik-skopp.de/blog/diagramme/",
       "title": "Diagramme mit Mermaid",
       "summary": "Testbeitrag für Mermaid-Diagramme, hell und dunkel.",
-      "date_published": "2026-08-31T00:00:00.000Z",
-      "tags": [
-        "code"
-      ]
-    },
-    {
-      "id": "https://erik-skopp.de/blog/syntax-highlighting/",
-      "url": "https://erik-skopp.de/blog/syntax-highlighting/",
-      "title": "Syntax-Highlighting",
-      "summary": "Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel.",
       "date_published": "2026-08-31T00:00:00.000Z",
       "tags": [
         "code"
