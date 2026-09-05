@@ -12,6 +12,7 @@ export default defineConfig({
       errorLocale: "en",
       mermaid: true,
       math: true,
+      chess: true,
       colorScheme: "light",
       postList: "rows",
       nav: [
