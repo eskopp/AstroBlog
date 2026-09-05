@@ -13,6 +13,7 @@ export default defineConfig({
       mermaid: true,
       math: true,
       chess: true,
+      chessEngine: true,
       colorScheme: "light",
       postList: "rows",
       nav: [
