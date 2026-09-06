@@ -1,0 +1,4 @@
+Contact: https://erik-skopp.de/impressum/
+Expires: 2027-09-06T20:57:59.895Z
+Preferred-Languages: de, en
+Canonical: https://erik-skopp.de/.well-known/security.txt

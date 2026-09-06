@@ -1,0 +1,8 @@
+/* TEAM */
+  Name: Erik Skopp
+  Site: https://erik-skopp.de
+
+/* SITE */
+  Last update: 2026-09-06
+  Language: de, en
+  Built with: Astro, astro-blog-theme
