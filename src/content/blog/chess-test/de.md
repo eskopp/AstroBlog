@@ -12,7 +12,7 @@ SVG-Schachbrett gerendert. Kein JavaScript, keine externe Bibliothek im Browser.
 Unten steht immer die Seite, die am Zug ist – der kleine Kreis daneben zeigt es
 zusätzlich an, und der Button öffnet dieselbe Stellung im Lichess-Analyse-Tool.
 Ein optionaler "Engine laden"-Button unter jedem Brett startet Stockfish bei
-Bedarf direkt im Browser.
+Bedarf direkt im Browser, ein "Engine ausblenden"-Button räumt sie wieder weg.
 
 ## Grundstellung
 

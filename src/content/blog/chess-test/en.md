@@ -11,7 +11,7 @@ at build time. No JavaScript, no external library in the browser. The side to
 move always sits at the bottom — the small circle next to it shows the same
 thing, and the button opens the position in Lichess's analysis tool. An
 optional "Load engine" button below each board runs Stockfish in your browser
-on demand.
+on demand, and a "Hide engine" button clears it away again.
 
 ## Starting position
 
