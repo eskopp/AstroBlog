@@ -3,6 +3,8 @@ title: "Diagramme mit Mermaid"
 description: "Testbeitrag für Mermaid-Diagramme, hell und dunkel."
 pubDate: 2026-08-31
 tags: ["code"]
+series:
+  - { name: feature-tour, order: 3 }
 urlSlug: "diagramme"
 ai: true
 ---

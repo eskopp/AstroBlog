@@ -3,6 +3,8 @@ title: "Diagrams with Mermaid"
 description: "Test post for Mermaid diagrams, light and dark."
 pubDate: 2026-08-31
 tags: ["code"]
+series:
+  - { name: feature-tour, order: 3 }
 ai: true
 ---
 

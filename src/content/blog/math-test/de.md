@@ -3,6 +3,8 @@ title: "Mathe, Chemie und Physik"
 description: "Testbeitrag für Formelsatz mit KaTeX – zur Build-Zeit gerendert, ohne Client-JS."
 pubDate: 2026-08-31
 tags: ["code"]
+series:
+  - { name: feature-tour, order: 4 }
 urlSlug: "formeln"
 ai: true
 ---

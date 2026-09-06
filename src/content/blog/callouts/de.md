@@ -3,6 +3,8 @@ title: "Info-Boxen"
 description: "Die fünf farbigen Hinweiskästen im Beitrag."
 pubDate: 2026-08-31
 tags: ["reference"]
+series:
+  - { name: feature-tour, order: 5 }
 urlSlug: "info-boxen"
 ai: true
 ---

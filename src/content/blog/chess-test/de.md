@@ -3,6 +3,8 @@ title: "Schachstellungen"
 description: "Testbeitrag für FEN-Diagramme – zur Build-Zeit als SVG gerendert, ohne Client-JS."
 pubDate: 2026-09-05
 tags: ["code"]
+series:
+  - { name: feature-tour, order: 6 }
 urlSlug: "schachstellungen"
 ai: true
 ---

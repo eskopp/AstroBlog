@@ -4,6 +4,9 @@ description: "Ein ausführlicher Blick auf Aufbau, Deployment und alle Bausteine
 pubDate: 2026-09-01
 updatedDate: 2026-09-01
 tags: ["meta", "code"]
+series:
+  - { name: feature-tour, order: 1, title: "Was dieser Blog kann" }
+  - { name: behind-the-scenes, order: 2 }
 urlSlug: "wie-dieser-blog-funktioniert"
 ai: true
 ---

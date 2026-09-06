@@ -3,6 +3,8 @@ title: "Hallo Welt"
 description: "Wie dieser Blog aufgebaut ist – Theme, Deployment und was drinsteckt."
 pubDate: 2026-08-30
 tags: ["meta"]
+series:
+  - { name: behind-the-scenes, order: 1, title: "Hinter den Kulissen" }
 urlSlug: "hallo-welt"
 ai: true
 ---

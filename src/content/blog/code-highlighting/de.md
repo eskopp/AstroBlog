@@ -3,6 +3,8 @@ title: "Syntax-Highlighting"
 description: "Ein Testbeitrag für die Code-Darstellung – Python und Java, hell und dunkel."
 pubDate: 2026-08-31
 tags: ["code"]
+series:
+  - { name: feature-tour, order: 2 }
 urlSlug: "syntax-highlighting"
 ai: true
 ---

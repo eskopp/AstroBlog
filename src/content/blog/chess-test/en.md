@@ -3,6 +3,8 @@ title: "Chess positions"
 description: "Test post for FEN diagrams — rendered as SVG at build time, no client-side JS."
 pubDate: 2026-09-05
 tags: ["code"]
+series:
+  - { name: feature-tour, order: 6 }
 ai: true
 ---
 

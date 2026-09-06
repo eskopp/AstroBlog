@@ -3,6 +3,8 @@ title: "Hello world"
 description: "How this blog is put together — theme, deployment and what's inside."
 pubDate: 2026-08-30
 tags: ["meta"]
+series:
+  - { name: behind-the-scenes, order: 1, title: "Behind the scenes" }
 ai: true
 ---
 

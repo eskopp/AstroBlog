@@ -3,6 +3,8 @@ title: "Syntax highlighting"
 description: "A test post for code rendering — Python and Java, light and dark."
 pubDate: 2026-08-31
 tags: ["code"]
+series:
+  - { name: feature-tour, order: 2 }
 ai: true
 ---
 

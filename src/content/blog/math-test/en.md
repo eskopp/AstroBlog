@@ -3,6 +3,8 @@ title: "Math, chemistry and physics"
 description: "Test post for formula typesetting with KaTeX — rendered at build time, no client JS."
 pubDate: 2026-08-31
 tags: ["code"]
+series:
+  - { name: feature-tour, order: 4 }
 ai: true
 ---
 

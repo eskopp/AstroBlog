@@ -4,6 +4,9 @@ description: "A thorough look at how the site is built, deployed and maintained 
 pubDate: 2026-09-01
 updatedDate: 2026-09-01
 tags: ["meta", "code"]
+series:
+  - { name: feature-tour, order: 1, title: "Blog feature tour" }
+  - { name: behind-the-scenes, order: 2 }
 ai: true
 ---
 
