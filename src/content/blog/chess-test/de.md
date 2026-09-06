@@ -46,3 +46,15 @@ unabhängig davon, wer am Zug ist – hier dieselbe Stellung aus Schwarz-Sicht:
 ```fen black
 rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3
 ```
+
+## Ohne Engine
+
+`noengine` nach der Sprache rendert ein rein statisches Brett, auch wenn die
+Engine für die ganze Seite aktiv ist: keine Bewertungsleiste, keine
+Analysepfeile, kein "Engine laden"-Button, keine Zugliste. Der Lichess-Link
+bleibt. Lässt sich mit `white` oder `black` für eine feste Ausrichtung
+kombinieren.
+
+```fen noengine
+r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 4 4
+```
