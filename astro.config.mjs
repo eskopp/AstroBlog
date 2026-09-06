@@ -16,6 +16,7 @@ export default defineConfig({
       chessEngine: true,
       colorScheme: "light",
       security: { contact: "https://erik-skopp.de/impressum/", preferredLanguages: ["de", "en"] },
+      pwa: { themeColor: "#fbfbfc", backgroundColor: "#fbfbfc" },
       postList: "rows",
       nav: [
         { href: "/", label: "Home" },
