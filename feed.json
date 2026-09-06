@@ -54,20 +54,20 @@
       ]
     },
     {
-      "id": "https://erik-skopp.de/blog/formeln/",
-      "url": "https://erik-skopp.de/blog/formeln/",
-      "title": "Mathe, Chemie und Physik",
-      "summary": "Testbeitrag für Formelsatz mit KaTeX – zur Build-Zeit gerendert, ohne Client-JS.",
+      "id": "https://erik-skopp.de/blog/diagramme/",
+      "url": "https://erik-skopp.de/blog/diagramme/",
+      "title": "Diagramme mit Mermaid",
+      "summary": "Testbeitrag für Mermaid-Diagramme, hell und dunkel.",
       "date_published": "2026-08-31T00:00:00.000Z",
       "tags": [
         "code"
       ]
     },
     {
-      "id": "https://erik-skopp.de/blog/diagramme/",
-      "url": "https://erik-skopp.de/blog/diagramme/",
-      "title": "Diagramme mit Mermaid",
-      "summary": "Testbeitrag für Mermaid-Diagramme, hell und dunkel.",
+      "id": "https://erik-skopp.de/blog/formeln/",
+      "url": "https://erik-skopp.de/blog/formeln/",
+      "title": "Mathe, Chemie und Physik",
+      "summary": "Testbeitrag für Formelsatz mit KaTeX – zur Build-Zeit gerendert, ohne Client-JS.",
       "date_published": "2026-08-31T00:00:00.000Z",
       "tags": [
         "code"
